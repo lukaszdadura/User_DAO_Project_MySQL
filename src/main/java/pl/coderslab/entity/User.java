@@ -44,7 +44,7 @@ public class User {
 
     @Override
     public String toString() {
-        String objectDesc = String.format("Id: %s, nazwa użytkowniak: %s, email: %s, hasło: %s",getId(),getUserName(),getEmail(),getPassword());
+        String objectDesc = String.format("Id: %s, email: %s, nazwa użytkownika: %s, hasło: %s",getId(),getUserName(),getEmail(),getPassword());
         return objectDesc;
     }
 }
