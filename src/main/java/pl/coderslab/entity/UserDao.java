@@ -1,9 +1,7 @@
 package pl.coderslab.entity;
 
 
-import at.favre.lib.crypto.bcrypt.BCrypt;
-import java.io.UnsupportedEncodingException;
-import java.security.SecureRandom;
+import org.mindrot.jbcrypt.BCrypt;
 
 import java.sql.*;
 import java.util.Arrays;
@@ -18,14 +16,14 @@ public class UserDao {
 
 
         public User create(User user) {
-                BC
+
+
 
                 try (Connection connection = DBUtil.getConnection()) {
                         PreparedStatement statement = connection.prepareStatement(CREATE_USER_QUERY, Statement.RETURN_GENERATED_KEYS);
                         statement.setString(1, user.getUserName());
                         statement.setString(2, user.getEmail());
-                        statement.setString(3, BCrypt.with(user.getPassword());
-                        BCrypt.with()
+                        statement.setString(3, BCrypt.hashpw(user.getPassword(), BCrypt.gensalt()));
                         statement.executeUpdate();
                         ResultSet resultSet = statement.getGeneratedKeys();
                         if (resultSet.next()) {
